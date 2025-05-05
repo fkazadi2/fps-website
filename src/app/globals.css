@@ -1,0 +1,110 @@
+@import "tailwindcss";
+@import "./colors.css";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary: #005bb0;    /* Bleu principal du logo FPS */
+  --secondary: #29335C;  /* Bleu foncé complémentaire */
+  --accent: #F8C03E;     /* Doré/jaune accentuation */
+  --danger: #e10000;     /* Rouge pour les boutons principaux */
+  
+  /* Définition des polices */
+  --font-heading: var(--font-poppins);
+  --font-body: var(--font-roboto);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+}
+
+/* Styles pour les titres avec Poppins et tracking réduit */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.01em; /* tracking de -10 en tailwind équivaut à peu près à -0.01em en CSS standard */
+  font-weight: 700;
+}
+
+h1 {
+  letter-spacing: -0.02em; /* tracking encore plus serré pour les grands titres */
+}
+
+/* Styles pour l'organigramme */
+.organigramme-container {
+  transition: all 0.3s ease;
+}
+
+.organigramme-container:hover {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Animation pour les connecteurs */
+@keyframes pulse-connector {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.organigramme-container:hover div[class*="border-gray-400"] {
+  border-color: var(--primary);
+  animation: pulse-connector 2s infinite;
+}
+
+/* Styles personnalisés pour les éléments du site */
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+  transition: all 0.2s ease;
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary);
+}
+
+.btn-accent {
+  background-color: var(--accent);
+  color: var(--secondary);
+  transition: all 0.2s ease;
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+.btn-accent:hover {
+  filter: brightness(1.05);
+}
+
+/* Styles pour Leaflet */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.leaflet-control-container .leaflet-routing-container-hide {
+  display: none;
+}
+
+.leaflet-popup-content {
+  margin: 8px 12px;
+  line-height: 1.3;
+  font-size: 13px;
+  font-size: 1rem;
+  min-height: 1px;
+}
